@@ -8,7 +8,6 @@
     "location": {
       "value": "${AZURE_LOCATION}"
     },
-    "openAILocation": {},
     "dalleLocation": {}
   }
 }

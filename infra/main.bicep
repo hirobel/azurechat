@@ -17,7 +17,6 @@ param location string
     type: 'location'
   }
 })
-param openAILocation string
 
 param openAISku string = 'S0'
 param openAIApiVersion string = '2023-12-01-preview'
@@ -79,8 +78,6 @@ module resources 'resources.bicep' = {
     resourceToken: resourceToken
     tags: tags
     openai_api_version: openAIApiVersion
-    openAiLocation: openAILocation
-    openAiSkuName: openAISku
     chatGptDeploymentCapacity: chatGptDeploymentCapacity
     chatGptDeploymentName: chatGptDeploymentName
     chatGptModelName: chatGptModelName

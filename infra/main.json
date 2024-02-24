@@ -24,24 +24,6 @@
         "description": "Primary location for all resources"
       }
     },
-    "openAILocation": {
-      "type": "string",
-      "allowedValues": [
-        "australiaeast",
-        "canadaeast",
-        "francecentral",
-        "southindia",
-        "uksouth",
-        "swedencentral",
-        "westus"
-      ],
-      "metadata": {
-        "azd": {
-          "type": "location"
-        },
-        "description": "Location for the OpenAI resource group"
-      }
-    },
     "openAISku": {
       "type": "string",
       "defaultValue": "S0"
@@ -197,12 +179,6 @@
           "openai_api_version": {
             "value": "[parameters('openAIApiVersion')]"
           },
-          "openAiLocation": {
-            "value": "[parameters('openAILocation')]"
-          },
-          "openAiSkuName": {
-            "value": "[parameters('openAISku')]"
-          },
           "chatGptDeploymentCapacity": {
             "value": "[parameters('chatGptDeploymentCapacity')]"
           },
@@ -296,13 +272,6 @@
             },
             "openai_api_version": {
               "type": "string"
-            },
-            "openAiLocation": {
-              "type": "string"
-            },
-            "openAiSkuName": {
-              "type": "string",
-              "defaultValue": "S0"
             },
             "chatGptDeploymentCapacity": {
               "type": "int",
@@ -976,21 +945,6 @@
               }
             },
             {
-              "type": "Microsoft.CognitiveServices/accounts",
-              "apiVersion": "2023-05-01",
-              "name": "[variables('openai_name')]",
-              "location": "[parameters('openAiLocation')]",
-              "tags": "[parameters('tags')]",
-              "kind": "OpenAI",
-              "properties": {
-                "customSubDomainName": "[variables('openai_name')]",
-                "publicNetworkAccess": "Enabled"
-              },
-              "sku": {
-                "name": "[parameters('openAiSkuName')]"
-              }
-            },
-            {
               "copy": {
                 "name": "llmdeployment",
                 "count": "[length(variables('llmDeployments'))]",
@@ -1008,36 +962,6 @@
               "dependsOn": [
                 "[resourceId('Microsoft.CognitiveServices/accounts', variables('openai_name'))]"
               ]
-            },
-            {
-              "type": "Microsoft.CognitiveServices/accounts",
-              "apiVersion": "2023-05-01",
-              "name": "[variables('openai_dalle_name')]",
-              "location": "[parameters('dalleLocation')]",
-              "tags": "[parameters('tags')]",
-              "kind": "OpenAI",
-              "properties": {
-                "customSubDomainName": "[variables('openai_dalle_name')]",
-                "publicNetworkAccess": "Enabled"
-              },
-              "sku": {
-                "name": "[parameters('openAiSkuName')]"
-              }
-            },
-            {
-              "type": "Microsoft.CognitiveServices/accounts",
-              "apiVersion": "2023-05-01",
-              "name": "[variables('openai_gpt_vision_name')]",
-              "location": "[parameters('gptvisionLocation')]",
-              "tags": "[parameters('tags')]",
-              "kind": "OpenAI",
-              "properties": {
-                "customSubDomainName": "[variables('openai_gpt_vision_name')]",
-                "publicNetworkAccess": "Enabled"
-              },
-              "sku": {
-                "name": "[parameters('openAiSkuName')]"
-              }
             },
             {
               "type": "Microsoft.CognitiveServices/accounts",

@@ -3,8 +3,6 @@ param resourceToken string
 
 param openai_api_version string
 
-param openAiLocation string
-param openAiSkuName string = 'S0'
 param chatGptDeploymentCapacity int = 30
 param chatGptDeploymentName string = 'chat-gpt-35-turbo'
 param chatGptModelName string = 'chat-gpt-35-turbo'
