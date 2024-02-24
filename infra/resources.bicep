@@ -298,30 +298,6 @@ resource kv 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
     enabledForTemplateDeployment: false
   }
 
-  resource AZURE_OPENAI_VISION_API_KEY 'secrets' = {
-    name: 'AZURE-OPENAI-VISION-API-KEY'
-    properties: {
-      contentType: 'text/plain'
-      value: azureopenaivision.listKeys().key1
-    }
-  }
-
-  resource OPENAI_API_KEY 'secrets' = {
-    name: 'AZURE-OPENAI-API-KEY'
-    properties: {
-      contentType: 'text/plain'
-      value: azureopenai.listKeys().key1
-    }
-  }
-
-  resource AZURE_OPENAI_DALLE_API_KEY 'secrets' = {
-    name: 'AZURE-OPENAI-DALLE-API-KEY'
-    properties: {
-      contentType: 'text/plain'
-      value: azureopenaidalle.listKeys().key1
-    }
-  }
-
   resource NEXTAUTH_SECRET 'secrets' = {
     name: 'NEXTAUTH-SECRET'
     properties: {
