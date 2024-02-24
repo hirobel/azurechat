@@ -1,16 +1,6 @@
 param name string = 'azurechat-demo'
 param resourceToken string
 
-param openai_api_version string
-
-param chatGptDeploymentCapacity int = 30
-param chatGptDeploymentName string = 'chat-gpt-35-turbo'
-param chatGptModelName string = 'chat-gpt-35-turbo'
-param chatGptModelVersion string = '1106'
-param embeddingDeploymentName string = 'text-embedding-ada-002'
-param embeddingDeploymentCapacity int = 10
-param embeddingModelName string = 'text-embedding-ada-002'
-
 param speechServiceSkuName string = 'S0'
 
 param formRecognizerSkuName string = 'S0'
@@ -27,10 +17,6 @@ param location string = resourceGroup().location
 param nextAuthHash string = uniqueString(newGuid())
 
 param tags object = {}
-
-var openai_name = toLower('${name}-aillm-${resourceToken}')
-var openai_dalle_name = toLower('${name}-aidalle-${resourceToken}')
-var openai_gpt_vision_name = toLower('${name}-aivision-${resourceToken}')
 
 var form_recognizer_name = toLower('${name}-form-${resourceToken}')
 var speech_service_name = toLower('${name}-speech-${resourceToken}')
@@ -54,30 +40,6 @@ var validStorageServiceImageContainerName = toLower(replace(storageServiceImageC
 var databaseName = 'chat'
 var historyContainerName = 'history'
 var configContainerName = 'config'
-
-var llmDeployments = [
-  {
-    name: chatGptDeploymentName
-    model: {
-      format: 'OpenAI'
-      name: chatGptModelName
-      version: chatGptModelVersion
-    }
-    sku: {
-      name: 'Standard'
-      capacity: chatGptDeploymentCapacity
-    }
-  }
-  {
-    name: embeddingDeploymentName
-    model: {
-      format: 'OpenAI'
-      name: embeddingModelName
-      version: '2'
-    }
-    capacity: embeddingDeploymentCapacity
-  }
-]
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: appservice_name
@@ -111,32 +73,8 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
       minTlsVersion: '1.2'
       appSettings: [ 
         { 
-          name: 'AZURE_KEY_VAULT_NAME'
-          value: keyVaultName
-        }
-        { 
           name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
           value: 'true'
-        }
-        {
-          name: 'OPENAI_API_KEY'
-          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_API_KEY.name})'
-        }
-        {
-          name: 'OPENAI_API_INSTANCE_NAME'
-          value: openai_name
-        }
-        {
-          name: 'OPENAI_API_DEPLOYMENT_NAME'
-          value: chatGptDeploymentName
-        }
-        {
-          name: 'OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME'
-          value: embeddingDeploymentName
-        }
-        {
-          name: 'OPENAI_API_VERSION'
-          value: openai_api_version
         }
         {
           name: 'NEXTAUTH_SECRET'

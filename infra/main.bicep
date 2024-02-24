@@ -18,23 +18,10 @@ param location string
   }
 })
 
-param openAISku string = 'S0'
-param openAIApiVersion string = '2023-12-01-preview'
-
-param chatGptDeploymentCapacity int = 120
-param chatGptDeploymentName string = 'chat-gpt-35-turbo'
-param chatGptModelName string = 'gpt-35-turbo'
-param chatGptModelVersion string = '1106'
-param embeddingDeploymentName string = 'embedding'
-param embeddingDeploymentCapacity int = 120
-param embeddingModelName string = 'text-embedding-ada-002'
-
-param formRecognizerSkuName string = 'S0'
+param formRecognizerSkuName string = 'australiaeast'
 param searchServiceIndexName string = 'azure-chat'
 param searchServiceSkuName string = 'standard'
-
-// TODO: define good default Sku and settings for storage account
-param storageServiceSku object = { name: 'Standard_LRS' } 
+param storageServiceSku object = { name: 'Standard_LRS' }
 param storageServiceImageContainerName string = 'images'
 
 param resourceGroupName string = ''
@@ -56,16 +43,8 @@ module resources 'resources.bicep' = {
     name: name
     resourceToken: resourceToken
     tags: tags
-    openai_api_version: openAIApiVersion
-    chatGptDeploymentCapacity: chatGptDeploymentCapacity
-    chatGptDeploymentName: chatGptDeploymentName
-    chatGptModelName: chatGptModelName
-    chatGptModelVersion: chatGptModelVersion
-    embeddingDeploymentName: embeddingDeploymentName
-    embeddingDeploymentCapacity: embeddingDeploymentCapacity
-    embeddingModelName: embeddingModelName
-    formRecognizerSkuName: formRecognizerSkuName
     searchServiceIndexName: searchServiceIndexName
+    formRecognizerSkuName: formRecognizerSkuName
     searchServiceSkuName: searchServiceSkuName
     storageServiceSku: storageServiceSku
     storageServiceImageContainerName: storageServiceImageContainerName
