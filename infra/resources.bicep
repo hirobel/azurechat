@@ -11,19 +11,6 @@ param embeddingDeploymentName string = 'text-embedding-ada-002'
 param embeddingDeploymentCapacity int = 10
 param embeddingModelName string = 'text-embedding-ada-002'
 
-param dalleLocation string
-param dalleDeploymentCapacity int
-param dalleDeploymentName string
-param dalleModelName string
-param dalleApiVersion string
-
-param gptvisionLocation string
-param gptvisionDeploymentCapacity int = 30
-param gptvisionDeploymentName string = 'gpt-4-vision'
-param gptvisionModelName string = 'gpt-4'
-param gptvisionApiVersion string = '2023-12-01-preview'
-param gptvisionModelVersion string = 'vision-preview'
-
 param speechServiceSkuName string = 'S0'
 
 param formRecognizerSkuName string = 'S0'
@@ -132,22 +119,6 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
           value: 'true'
         }
         {
-          name: 'OPENAI_VISION_API_KEY'
-          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_VISION_API_KEY.name})'
-        }
-        {
-          name: 'OPENAI_VISION_API_INSTANCE_NAME'
-          value: openai_gpt_vision_name
-        }
-        {
-          name: 'OPENAI_VISION_API_DEPLOYMENT_NAME'
-          value: gptvisionDeploymentName
-        }
-        {
-          name: 'OPENAI_VISION_API_VERSION'
-          value: gptvisionApiVersion
-        }
-        {
           name: 'OPENAI_API_KEY'
           value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_API_KEY.name})'
         }
@@ -166,22 +137,6 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
         {
           name: 'OPENAI_API_VERSION'
           value: openai_api_version
-        }
-        {
-          name: 'OPENAI_DALLE_API_KEY'
-          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_DALLE_API_KEY.name})'
-        }
-        {
-          name: 'OPENAI_DALLE_API_INSTANCE_NAME'
-          value: openai_dalle_name
-        }
-        {
-          name: 'OPENAI_DALLE_API_DEPLOYMENT_NAME'
-          value: dalleDeploymentName
-        }
-        {
-          name: 'OPENAI_DALLE_API_VERSION'
-          value: dalleApiVersion
         }
         {
           name: 'NEXTAUTH_SECRET'

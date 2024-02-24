@@ -8,6 +8,5 @@
     "location": {
       "value": "${AZURE_LOCATION}"
     },
-    "dalleLocation": {}
   }
 }
