@@ -710,7 +710,7 @@
                       "value": "[parameters('gptvisionApiVersion')]"
                     },
                     {
-                      "name": "AZURE_OPENAI_API_KEY",
+                      "name": "OPENAI_API_KEY",
                       "value": "[format('@Microsoft.KeyVault(VaultName={0};SecretName={1})', variables('keyVaultName'), 'AZURE-OPENAI-API-KEY')]"
                     },
                     {

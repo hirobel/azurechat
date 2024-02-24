@@ -150,8 +150,8 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
           value: gptvisionApiVersion
         }
         {
-          name: 'AZURE_OPENAI_API_KEY'
-          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::AZURE_OPENAI_API_KEY.name})'
+          name: 'OPENAI_API_KEY'
+          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_API_KEY.name})'
         }
         {
           name: 'AZURE_OPENAI_API_INSTANCE_NAME'
@@ -306,7 +306,7 @@ resource kv 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
     }
   }
 
-  resource AZURE_OPENAI_API_KEY 'secrets' = {
+  resource OPENAI_API_KEY 'secrets' = {
     name: 'AZURE-OPENAI-API-KEY'
     properties: {
       contentType: 'text/plain'
