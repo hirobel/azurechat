@@ -132,19 +132,19 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
           value: 'true'
         }
         {
-          name: 'AZURE_OPENAI_VISION_API_KEY'
-          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::AZURE_OPENAI_VISION_API_KEY.name})'
+          name: 'OPENAI_VISION_API_KEY'
+          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_VISION_API_KEY.name})'
         }
         {
-          name: 'AZURE_OPENAI_VISION_API_INSTANCE_NAME'
+          name: 'OPENAI_VISION_API_INSTANCE_NAME'
           value: openai_gpt_vision_name
         }
         {
-          name: 'AZURE_OPENAI_VISION_API_DEPLOYMENT_NAME'
+          name: 'OPENAI_VISION_API_DEPLOYMENT_NAME'
           value: gptvisionDeploymentName
         }
         {
-          name: 'AZURE_OPENAI_VISION_API_VERSION'
+          name: 'OPENAI_VISION_API_VERSION'
           value: gptvisionApiVersion
         }
         {
@@ -152,35 +152,35 @@ resource webApp 'Microsoft.Web/sites@2020-06-01' = {
           value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_API_KEY.name})'
         }
         {
-          name: 'AZURE_OPENAI_API_INSTANCE_NAME'
+          name: 'OPENAI_API_INSTANCE_NAME'
           value: openai_name
         }
         {
-          name: 'AZURE_OPENAI_API_DEPLOYMENT_NAME'
+          name: 'OPENAI_API_DEPLOYMENT_NAME'
           value: chatGptDeploymentName
         }
         {
-          name: 'AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME'
+          name: 'OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME'
           value: embeddingDeploymentName
         }
         {
-          name: 'AZURE_OPENAI_API_VERSION'
+          name: 'OPENAI_API_VERSION'
           value: openai_api_version
         }
         {
-          name: 'AZURE_OPENAI_DALLE_API_KEY'
-          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::AZURE_OPENAI_DALLE_API_KEY.name})'
+          name: 'OPENAI_DALLE_API_KEY'
+          value: '@Microsoft.KeyVault(VaultName=${kv.name};SecretName=${kv::OPENAI_DALLE_API_KEY.name})'
         }
         {
-          name: 'AZURE_OPENAI_DALLE_API_INSTANCE_NAME'
+          name: 'OPENAI_DALLE_API_INSTANCE_NAME'
           value: openai_dalle_name
         }
         {
-          name: 'AZURE_OPENAI_DALLE_API_DEPLOYMENT_NAME'
+          name: 'OPENAI_DALLE_API_DEPLOYMENT_NAME'
           value: dalleDeploymentName
         }
         {
-          name: 'AZURE_OPENAI_DALLE_API_VERSION'
+          name: 'OPENAI_DALLE_API_VERSION'
           value: dalleApiVersion
         }
         {
