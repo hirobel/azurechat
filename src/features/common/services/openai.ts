@@ -3,7 +3,7 @@ import { OpenAI } from "openai";
 export const OpenAIInstance = () => {
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    baseURL: `https://${process.env.AZURE_OPENAI_API_INSTANCE_NAME}.openai.azure.com/openai/deployments/${process.env.AZURE_OPENAI_API_DEPLOYMENT_NAME}`,
+    baseURL: `https://api.openai.com`,
     defaultQuery: { "api-version": process.env.AZURE_OPENAI_API_VERSION },
     defaultHeaders: { "api-key": process.env.OPENAI_API_KEY },
   });
@@ -23,7 +23,7 @@ export const OpenAIEmbeddingInstance = () => {
 
   const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    baseURL: `https://${process.env.AZURE_OPENAI_API_INSTANCE_NAME}.openai.azure.com/openai/deployments/${process.env.AZURE_OPENAI_API_EMBEDDINGS_DEPLOYMENT_NAME}`,
+    baseURL: `https://api.openai.com`,
     defaultQuery: { "api-version": process.env.AZURE_OPENAI_API_VERSION },
     defaultHeaders: { "api-key": process.env.OPENAI_API_KEY },
   });
@@ -44,7 +44,7 @@ export const OpenAIDALLEInstance = () => {
 
   const openai = new OpenAI({
     apiKey: process.env.AZURE_OPENAI_DALLE_API_KEY,
-    baseURL: `https://${process.env.AZURE_OPENAI_DALLE_API_INSTANCE_NAME}.openai.azure.com/openai/deployments/${process.env.AZURE_OPENAI_DALLE_API_DEPLOYMENT_NAME}`,
+    baseURL: `https://api.openai.com`,
     defaultQuery: {
       "api-version":
         process.env.AZURE_OPENAI_DALLE_API_VERSION || "2023-12-01-preview",
@@ -70,7 +70,7 @@ export const OpenAIVisionInstance = () => {
 
   const openai = new OpenAI({
     apiKey: process.env.AZURE_OPENAI_VISION_API_KEY,
-    baseURL: `https://${process.env.AZURE_OPENAI_VISION_API_INSTANCE_NAME}.openai.azure.com/openai/deployments/${process.env.AZURE_OPENAI_VISION_API_DEPLOYMENT_NAME}`,
+    baseURL: `https://api.openai.com`,
     defaultQuery: {
       "api-version": process.env.AZURE_OPENAI_VISION_API_VERSION,
     },
